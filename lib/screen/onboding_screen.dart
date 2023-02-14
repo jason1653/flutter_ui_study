@@ -23,10 +23,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /**
+     * Scaffold : Material Design의 레이아웃 구조를 구현할 수 있게 해주는 위젯
+     */
     return Scaffold(
+      /**
+       * Stack : 위젯을 겹쳐서 배치할 수 있게 해주는 위젯
+       */
       body: Stack(
         children: [
           /** background image 설정 **/
+          /**
+           * Positioned : Stack 위젯의 자식 위젯을 위치를 지정하여 배치할 수 있게 해주는 위젯
+           */
           Positioned(
               width: MediaQuery.of(context).size.width * 1.7,
               left: 100,
@@ -36,6 +45,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             fit: BoxFit.cover,
           )),
           /*** blur background ***/
+          /**
+           * Positioned.fill : Stack 위젯의 자식 위젯을 전체 화면에 꽉 채워서 배치할 수 있게 해주는 위젯
+           */
           Positioned.fill(
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
@@ -51,18 +63,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: const SizedBox(),
               )
           ),
+          /**
+           * AnimatedPositioned : Stack 위젯의 자식 위젯의 위치를 애니메이션 효과를 주어 변경할 수 있게 해주는 위젯
+           */
           AnimatedPositioned(
             top: isShowSignInDialog ? -50 : 0,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             duration: const Duration(milliseconds: 260),
+            /**
+             * SafeArea : 기기의 안전한 영역을 지정하여 위젯을 배치할 수 있게 해주는 위젯
+             */
             child: SafeArea(
+              /**
+               * Padding : 위젯의 내부 여백을 지정할 수 있게 해주는 위젯
+               */
               child: Padding(
+                /**
+                 * EdgeInsets.symmetric : 위젯의 내부 여백을 좌우로 지정할 수 있게 해주는 위젯
+                 */
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
+
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    /**
+                     * Spacer : 위젯의 내부 여백을 지정할 수 있게 해주는 위젯
+                     */
                     const Spacer(),
+                    /**
+                     * SizedBox : 위젯의 크기를 지정할 수 있게 해주는 위젯
+                     */
                     SizedBox(
                       width:260,
                       child: Column(
