@@ -42,6 +42,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: const SizedBox(),
               )
           ),
+          const RiveAnimation.asset(
+            "assets/RiveAssets/shapes.riv",
+          ),
           Positioned.fill(
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
