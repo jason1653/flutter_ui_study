@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:ui_study/screen/components/animated_btn.dart';
+import 'package:ui_study/screen/components/sign_in_dialog.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -123,14 +124,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const Spacer(flex: 2),
 
                     ElevatedButton(
-                        onPressed: () => {},
-                        child: const Text("Start the Course"),
+                        onPressed: () {
+                          _btnAnimationController.isActive = true;
+
+                          Future.delayed(
+                            const Duration(milliseconds: 100),
+                            () {
+                              setState(() {
+                                isShowSignInDialog = true;
+                              });
+                              showCustomDialog(context, onValue: (value) {
+                                setState(() {
+                                  isShowSignInDialog = false;
+                                });
+                              });
+                            },
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                         ),
+                        child: const Text("Start the Course"),
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 16),
