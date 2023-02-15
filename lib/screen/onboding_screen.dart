@@ -54,15 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: const SizedBox(),
               )
           ),
-          const RiveAnimation.asset(
-            "assets/RiveAssets/shapes.riv",
-          ),
-          Positioned.fill(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
-                child: const SizedBox(),
-              )
-          ),
+
           /**
            * AnimatedPositioned : Stack 위젯의 자식 위젯의 위치를 애니메이션 효과를 주어 변경할 수 있게 해주는 위젯
            */
@@ -85,7 +77,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
 
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  /**
+                   * CrossAxisAlignment.stretch : Column 위젯의 자식 위젯을 전체 화면에 꽉 채워서 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.start : Column 위젯의 자식 위젯을 왼쪽으로 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.end : Column 위젯의 자식 위젯을 오른쪽으로 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.center : Column 위젯의 자식 위젯을 가운데로 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.baseline : Column 위젯의 자식 위젯을 기준선에 맞춰서 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.firstBaseline : Column 위젯의 자식 위젯을 첫번째 기준선에 맞춰서 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.lastBaseline : Column 위젯의 자식 위젯을 마지막 기준선에 맞춰서 배치할 수 있게 해주는 위젯
+                   * CrossAxisAlignment.stretch : Column 위젯의 자식 위젯을 전체 화면에 꽉 채워서 배치할 수 있게 해주는 위젯
+                   */
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     /**
                      * Spacer : 위젯의 내부 여백을 지정할 수 있게 해주는 위젯
@@ -120,13 +122,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     const Spacer(flex: 2),
 
-                    AnimatedBtn(
-                        btnAnimationController: _btnAnimationController,
-                        press: () => {
-                          _btnAnimationController.isActive = true,
-
-
-                        }
+                    ElevatedButton(
+                        onPressed: () => {},
+                        child: const Text("Start the Course"),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                        ),
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 16),
